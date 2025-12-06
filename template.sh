@@ -1,6 +1,6 @@
 #creating directory
 mkdir -p src
-mdkir -p research
+mkdir -p research
 
 #creating files
 touch src/__init__.py
