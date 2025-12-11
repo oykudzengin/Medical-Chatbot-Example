@@ -36,4 +36,6 @@ google-generativeai
 # Embeddings / Vectorization
 sentence-transformers
 pypdf
+
+langchain-text-splitters
  - e .
