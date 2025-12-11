@@ -118,4 +118,4 @@ open up localhost:
    - PINECONE_API_KEY
    - OPENAI_API_KEY
 
-   #bos commmit icin
+   #bos commmit icin yazdim
