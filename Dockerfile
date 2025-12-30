@@ -6,4 +6,6 @@ COPY . /app
 
 RUN pip install -r requirements.txt
 
+RUN python --version && pip show langchain
+
 CMD ["python3", "app.py"]
