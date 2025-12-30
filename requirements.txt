@@ -38,4 +38,4 @@ sentence-transformers
 pypdf
 
 langchain-text-splitters
- - e .
+# - e .
