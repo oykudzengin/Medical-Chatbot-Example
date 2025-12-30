@@ -25,6 +25,7 @@ flask
 langchain
 langchain-core
 langchain-community
+langchain-huggingface
 
 # Pinecone integration
 langchain-pinecone
