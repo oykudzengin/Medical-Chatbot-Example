@@ -34,6 +34,9 @@ langchain-pinecone
 langchain-google-genai
 google-generativeai
 
+#Groq LLama
+langchain-groq
+
 # Embeddings / Vectorization
 sentence-transformers
 pypdf
