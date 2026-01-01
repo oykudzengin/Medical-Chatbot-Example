@@ -2,7 +2,7 @@
 ITU MTH409: AI Chatbot Course Term Assignment. 
 Bu proje, "The Gale Encyclopedia of Medicine" kitap pdf dosyasi kullanilarak medikal asistan olan bir chatbot uretmeyi amaclamistir.
 ### Medikal Asistan
-Asistanimiz hastalik isimleri sourldugunda kullaniciyi bilgilendirir, tedavisi ve belirtilerini kullaniciya aciklar.
+Asistanımız hastalık isimleri sorulduğunda kullanıcıyı bilgilendirir, tedavileri ve belirtileri hakkında soruları yanıtlar.
 
 ---
 
@@ -15,7 +15,7 @@ Chatbot'un verileri tanıması için yapılan ön hazırlık aşamasıdır:
 
 1.  **Veri Yükleme (Document Loading):** `pypdf` kütüphanesi kullanılarak PDF dosyaları okunur ve metne dönüştürülür.
 2.  **Metin Bölümleme (Text Splitting):** LLM token limitlerine takılmamak ve anlam bütünlüğünü korumak için metinler `RecursiveCharacterTextSplitter` ile 1000 karakterlik küçük parçalara (chunks) ayrılır.
-3.  **Vektörleştirme (Embedding):** Her bir metin parçası, **Hugging Face** üzerinden ==`sentence-transformers/all-MiniLM-L6-v2`== modeli kullanılarak sayısal vektörlere dönüştürülür.
+3.  **Vektörleştirme (Embedding):** Her bir metin parçası, **Hugging Face** üzerinden `sentence-transformers/all-MiniLM-L6-v2` modeli kullanılarak sayısal vektörlere dönüştürülür.
 4.  **Vektör Veritabanı (Vector Store):** Oluşturulan bu vektörler, hızlı anlamsal arama yapılabilmesi için **Pinecone** bulut veritabanına kaydedilir.
 
 ### 2. Soru-Cevap Akışı (Chat Pipeline)
@@ -35,13 +35,14 @@ Bu projenin hayata geçirilmesinde aşağıdaki modern AI teknolojileri kullanı
 
 | Teknoloji | Görevi | Neden Seçildi? |
 |-----------|--------|----------------|
-| **LangChain** | **Orkestrasyon** | Tüm bileşenleri (LLM, VectorDB, Prompt) birbirine bağlayan ana iskeleti oluşturur. |
+| **LangChain** | **Omurga** | Tüm bileşenleri (LLM, VectorDB, Prompt) birbirine bağlayan ana iskeleti oluşturur. |
 | **Google Gemini** | **LLM (Zeka)** | Hızlı yanıt süresi ve yüksek bağlam kapasitesi için tercih edildi. |
 | **Pinecone** | **Vector Database** | Vektör verilerini bulutta saklamak ve milisaniyeler içinde arama yapmak için kullanıldı. |
 | **Hugging Face** | **Embeddings** | Metinleri anlamlı sayısal verilere dönüştürmek için açık kaynaklı modeller sağlar. |
 | **Flask** | **Backend / API** | Python tabanlı hafif bir web sunucusu oluşturmak ve frontend ile iletişimi sağlamak için. |
 | **PyPDF** | **PDF Loader** | Doküman içerisindeki metinleri ham formatta ayıklamak için. |
 
+```mermaid
 graph TD
     A[PDF Dosyası] -->|pypdf| B(Metin Çıkarma)
     B -->|Text Splitter| C(Parçalara Bölme)
@@ -53,5 +54,19 @@ graph TD
     E -->|İlgili İçerik| H[Bağlam + Soru]
     H -->|LangChain| I[Google Gemini LLM]
     I -->|Cevap| J[Kullanıcı Arayüzü]
+```
+
+---
+
+## Seçilen LLM Modelleri
+
+- Google Gemini (2.5-flash-lite)
+    Sektörün GPT ile birlikte önde gelen modellerinden biri ve ücretsiz API key oluşturulabilmesi sebebiyle ilk tercihim oldu.
+- Groq ()
+    Gemini ile karşılaştırma yapabileceğim (OpenAI dışı) bir model olarak, hızlı olması, Gemini'a kıyasla açık kaynak olması ve kurulum kolaylığı açısından Groq-Llama3 modelini tercih ettim. Bir de ücretsiz API key oluşturulabilmesinden dolayı :smiley: .
+
+
+
+
 
 
