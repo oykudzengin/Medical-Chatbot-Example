@@ -1,114 +1,57 @@
 # Medical-Chatbot
-ITU MTH409: AI Chatbot Course Term Assignment
+ITU MTH409: AI Chatbot Course Term Assignment. 
 Bu proje, "The Gale Encyclopedia of Medicine" kitap pdf dosyasi kullanilarak medikal asistan olan bir chatbot uretmeyi amaclamistir.
 ### Medikal Asistan
-Asistanimiz hastalik isimleri sourldugunda kullaniciyi bilgilendiren, tedavisi ve belirtilerini kullaniciya aciklar.
+Asistanimiz hastalik isimleri sourldugunda kullaniciyi bilgilendirir, tedavisi ve belirtilerini kullaniciya aciklar.
 
-### Proje Adimlari
-Bu projede Langchain, HuggingFace, Pinecone, Gemini modeli kullanilmistir.
-Kullanilan toollari birbirine baglayan aracimiz Langchain'dir.
+---
 
+## 🏗️ Proje Mimarisi ve Çalışma Mantığı
 
-### Create a `.env` file in the root directory and add your Pinecone & openai credentials as follows:
+Proje, verilerin işlenmesi (Ingestion) ve kullanıcının soru sorması (Inference) olmak üzere iki ana aşamadan oluşur. Tüm bu süreçlerin yönetiminde **LangChain** orkestrasyon framework'ü kullanılmıştır.
 
-```ini
-PINECONE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-OPENAI_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-```
+### 1. Veri Hazırlığı ve İndeksleme (Data Ingestion)
+Chatbot'un verileri tanıması için yapılan ön hazırlık aşamasıdır:
 
+1.  **Veri Yükleme (Document Loading):** `pypdf` kütüphanesi kullanılarak PDF dosyaları okunur ve metne dönüştürülür.
+2.  **Metin Bölümleme (Text Splitting):** LLM token limitlerine takılmamak ve anlam bütünlüğünü korumak için metinler `RecursiveCharacterTextSplitter` ile 1000 karakterlik küçük parçalara (chunks) ayrılır.
+3.  **Vektörleştirme (Embedding):** Her bir metin parçası, **Hugging Face** üzerinden ==`sentence-transformers/all-MiniLM-L6-v2`== modeli kullanılarak sayısal vektörlere dönüştürülür.
+4.  **Vektör Veritabanı (Vector Store):** Oluşturulan bu vektörler, hızlı anlamsal arama yapılabilmesi için **Pinecone** bulut veritabanına kaydedilir.
 
-```bash
-# run the following command to store embeddings to pinecone
-python store_index.py
-```
+### 2. Soru-Cevap Akışı (Chat Pipeline)
+Kullanıcı arayüz üzerinden bir soru sorduğunda arka planda şu işlemler gerçekleşir:
 
-```bash
-# Finally run the following command
-python app.py
-```
+1.  **Kullanıcı Arayüzü:** Kullanıcı, **Flask** ile hazırlanan web arayüzünden sorusunu gönderir.
+2.  **Anlamsal Arama:** Kullanıcının sorusu vektöre çevrilir ve **Pinecone** üzerinde "bu soruya en çok benzeyen doküman parçaları" aranır (Similarity Search).
+3.  **Prompt Oluşturma:** Bulunan ilgili metin parçaları ve kullanıcının sorusu birleştirilerek **LangChain** aracılığıyla bir prompt (istem) haline getirilir.
+4.  **Yanıt Üretme (LLM):** Hazırlanan prompt, **Google Gemini 2.5 Flash** modeline gönderilir. Gemini, sadece kendisine sunulan bağlamı (context) kullanarak soruyu cevaplar.
+5.  **Sonuç:** Üretilen cevap Flask arayüzünde kullanıcıya gösterilir.
 
-Now,
-```bash
-open up localhost:
-```
+---
 
+## 🛠️ Kullanılan Teknolojiler
 
-### Techstack Used:
+Bu projenin hayata geçirilmesinde aşağıdaki modern AI teknolojileri kullanılmıştır:
 
-- Python
-- LangChain
-- Flask
-- GPT
-- Pinecone
+| Teknoloji | Görevi | Neden Seçildi? |
+|-----------|--------|----------------|
+| **LangChain** | **Orkestrasyon** | Tüm bileşenleri (LLM, VectorDB, Prompt) birbirine bağlayan ana iskeleti oluşturur. |
+| **Google Gemini** | **LLM (Zeka)** | Hızlı yanıt süresi ve yüksek bağlam kapasitesi için tercih edildi. |
+| **Pinecone** | **Vector Database** | Vektör verilerini bulutta saklamak ve milisaniyeler içinde arama yapmak için kullanıldı. |
+| **Hugging Face** | **Embeddings** | Metinleri anlamlı sayısal verilere dönüştürmek için açık kaynaklı modeller sağlar. |
+| **Flask** | **Backend / API** | Python tabanlı hafif bir web sunucusu oluşturmak ve frontend ile iletişimi sağlamak için. |
+| **PyPDF** | **PDF Loader** | Doküman içerisindeki metinleri ham formatta ayıklamak için. |
 
-# AWS-CICD-Deployment-with-Github-Actions
-
-## 1. Login to AWS console.
-
-## 2. Create IAM user for deployment
-
-	#with specific access
-
-	1. EC2 access : It is virtual machine
-
-	2. ECR: Elastic Container registry to save your docker image in aws
-
-
-	#Description: About the deployment
-
-	1. Build docker image of the source code
-
-	2. Push your docker image to ECR
-
-	3. Launch Your EC2 
-
-	4. Pull Your image from ECR in EC2
-
-	5. Lauch your docker image in EC2
-
-	#Policy:
-
-	1. AmazonEC2ContainerRegistryFullAccess
-
-	2. AmazonEC2FullAccess
-
-	
-## 3. Create ECR repo to store/save docker image
-    - Save the URI: 790522494567.dkr.ecr.us-east-1.amazonaws.com/medical-chatbot
-
-	
-## 4. Create EC2 machine (Ubuntu) 
-
-## 5. Open EC2 and Install docker in EC2 Machine:
-	
-	
-	#optinal
-
-	sudo apt-get update -y
-
-	sudo apt-get upgrade
-	
-	#required
-
-	curl -fsSL https://get.docker.com -o get-docker.sh
-
-	sudo sh get-docker.sh
-
-	sudo usermod -aG docker ubuntu
-
-	newgrp docker
-	
-# 6. Configure EC2 as self-hosted runner:
-    setting>actions>runner>new self hosted runner> choose os> then run command one by one
+graph TD
+    A[PDF Dosyası] -->|pypdf| B(Metin Çıkarma)
+    B -->|Text Splitter| C(Parçalara Bölme)
+    C -->|HuggingFace| D(Embedding Vektörleri)
+    D -->|Upload| E[(Pinecone VectorDB)]
+    
+    F[Kullanıcı Sorusu] -->|Flask| G(Sorgu Embedding)
+    G -->|Arama| E
+    E -->|İlgili İçerik| H[Bağlam + Soru]
+    H -->|LangChain| I[Google Gemini LLM]
+    I -->|Cevap| J[Kullanıcı Arayüzü]
 
 
-# 7. Setup github secrets:
-
-   - AWS_ACCESS_KEY_ID
-   - AWS_SECRET_ACCESS_KEY
-   - AWS_DEFAULT_REGION
-   - ECR_REPO
-   - PINECONE_API_KEY
-   - OPENAI_API_KEY
-
-   #bos commmit icin yazdim
