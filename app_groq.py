@@ -30,7 +30,7 @@ docsearch = PineconeVectorStore.from_existing_index(
 retriever = docsearch.as_retriever(search_type="similarity", search_kwargs={"k":3})
 #creting the retriever to bring the top 3 most relevant documents
 
-chatModel= ChatGroq(model="llama3-8b-8192",
+chatModel= ChatGroq(model="llama-3.1-8b-instant",
                     temperature=0.3,
                     api_key=GROQ_API_KEY)
 prompt = ChatPromptTemplate.from_messages(

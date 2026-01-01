@@ -37,6 +37,7 @@ Bu projenin hayata geçirilmesinde aşağıdaki modern AI teknolojileri kullanı
 |-----------|--------|----------------|
 | **LangChain** | **Omurga** | Tüm bileşenleri (LLM, VectorDB, Prompt) birbirine bağlayan ana iskeleti oluşturur. |
 | **Google Gemini** | **LLM (Zeka)** | Hızlı yanıt süresi ve yüksek bağlam kapasitesi için tercih edildi. |
+| **Groq Llama 3** | **LLM (Zeka)** | Hızlı oluşu ve açık kaynak olması, kolay entegre edilebilirliği sebebiyle tercih edildi. |
 | **Pinecone** | **Vector Database** | Vektör verilerini bulutta saklamak ve milisaniyeler içinde arama yapmak için kullanıldı. |
 | **Hugging Face** | **Embeddings** | Metinleri anlamlı sayısal verilere dönüştürmek için açık kaynaklı modeller sağlar. |
 | **Flask** | **Backend / API** | Python tabanlı hafif bir web sunucusu oluşturmak ve frontend ile iletişimi sağlamak için. |
@@ -60,12 +61,40 @@ graph TD
 
 ## Seçilen LLM Modelleri
 
-- Google Gemini (2.5-flash-lite)
+- Google Gemini (2.5-flash-lite) <br>
     Sektörün GPT ile birlikte önde gelen modellerinden biri ve ücretsiz API key oluşturulabilmesi sebebiyle ilk tercihim oldu.
-- Groq ()
+- Groq (Llama 3.1 8B) <br>
     Gemini ile karşılaştırma yapabileceğim (OpenAI dışı) bir model olarak, hızlı olması, Gemini'a kıyasla açık kaynak olması ve kurulum kolaylığı açısından Groq-Llama3 modelini tercih ettim. Bir de ücretsiz API key oluşturulabilmesinden dolayı :smiley: .
 
+---
 
+## Model Karşılaştırma
+
+Veri seti olarak PDF dosyası kullanıldığından dolayı bu projede iki LLM modelini kıyaslamak adına RAGAS (RAG Assessment) kütüphanesi kullanıldı. RAGAS Framework kullanılarak iki model arası bir Doğruluk Raporu çıkarıldı.
+
+---
+
+## Local'de Modeli Ayağa Kaldırma
+
+İki farklı LLM modeli kullanıldığından, iki farklı Python sanal environment oluşturularak ayrı ortamlarda yürütülmüştür. Bunun nedeni model değişikliği beraberinde gelen farklı langchain paketlerinde versiyon çatışması yaşanması ihtimaline karşın temiz bir çalışma ortaya çıkması amaçlanmasıdır.
+Langchain paketlerinin sıklıkla güncellenen yapıları sebebiyle import etme zorlukları ve versiyon çatışmaları sıklıkla karşımıza çıkıyor.
+
+#Projeleri Çalıştırma
+İki model için ayrı app dosyaları oluşturulmuştur ve lokalimizde uygun environment aktive edildikten sonra ilgili app dosyası çalıştırılarak lokalden chatbota bağlantı sağlanabilmektedir. <br>
+a.Gemini Modeli <br>
+```
+conda activate medibot
+```
+```python
+python app.py
+```
+b.Groq LLama Modeli <br>
+```
+conda activate medibot_gq
+```
+```python
+python app_gq.py
+```
 
 
 
