@@ -1,20 +1,13 @@
-# Medical-Chatbot-Example
-Medical Chatbot Rough Project guided by a YouTube video: https://www.youtube.com/watch?v=KnoVFU0yCUc&amp;t=3309s
+# Medical-Chatbot
+ITU MTH409: AI Chatbot Course Term Assignment
+Bu proje, "The Gale Encyclopedia of Medicine" kitap pdf dosyasi kullanilarak medikal asistan olan bir chatbot uretmeyi amaclamistir.
+### Medikal Asistan
+Asistanimiz hastalik isimleri sourldugunda kullaniciyi bilgilendiren, tedavisi ve belirtilerini kullaniciya aciklar.
 
-### SETUP 01- Create a conda env after opening the repository
+### Proje Adimlari
+Bu projede Langchain, HuggingFace, Pinecone, Gemini modeli kullanilmistir.
+Kullanilan toollari birbirine baglayan aracimiz Langchain'dir.
 
-```bash
-conda create -n medibot python=3.10 -y
-```
-
-```bash
-conda activate medibot
-```
-
-### STEP 02- install the requirements
-```bash
-pip install -r requirements.txt
-```
 
 ### Create a `.env` file in the root directory and add your Pinecone & openai credentials as follows:
 
