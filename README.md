@@ -73,7 +73,7 @@ graph TD
 Veri seti olarak PDF dosyası kullanıldığından dolayı bu projede iki LLM modelini kıyaslamak adına RAGAS (RAG Assessment) kütüphanesi kullanıldı. RAGAS Framework kullanılarak iki model için de Evaluation yapılarak csv dosyalarında sonuçlar tutuldu.<br>
 RAGAS jurisi için Gemini LLM modeli kullanıldı. <br>
 RAGAS Metriklerimiz: Faithfulness ve Answer Relevancy.<br>
-10 Soruluk bir test verisi kullanıldı ve evaluation işlemi gerçekleştirildi.
+5 Soruluk bir test verisi kullanıldı ve evaluation işlemi gerçekleştirildi.
 
 ---
 
