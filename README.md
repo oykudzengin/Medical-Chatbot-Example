@@ -1,6 +1,6 @@
 # :speech_balloon: Medical-Chatbot
 ITU MTH409: AI Chatbot Course Term Assignment. 
-Bu proje, "The Gale Encyclopedia of Medicine" kitap pdf dosyası kullanılarak medikal asistan olan bir chatbot üretmeyi amaçlamıştır.
+Bu proje, "The Gale Encyclopedia of Medicine" kitap pdf dosyası kullanılarak basic RAG yöntemiyle medikal asistan olan bir chatbot üretmeyi amaçlamıştır.
 ### :pill: Medikal Asistan
 Asistanımız hastalık isimleri sorulduğunda kullanıcıyı bilgilendirir, tedavileri ve belirtileri hakkında soruları yanıtlar.
 
@@ -157,7 +157,7 @@ python app_gq.py
 ## Proje Çıktıları, Dikkat Edilmesi Gereken Unsurlar ve Yorumlar
 
 ### Paket versiyon çakışmaları
-Langchain kullanımında paket yapısı güncellenebilme durumu olduğundan "pip install" komutunu ortamınızda çalıştırıp yeni bir paket yüklediğinizde versiyon çatışmaları sebebiyle projeniz çalışmayabilir. Oldukça fazla kez karşıma çıkan bir problem oldu. <br>
+Langchain kullanımında paket yapısı güncellenebilme durumu olduğundan `pip install` komutunu ortamınızda çalıştırıp yeni bir paket yüklediğinizde versiyon çatışmaları sebebiyle projeniz çalışmayabilir. Oldukça fazla kez karşıma çıkan bir problem oldu. <br>
 İki LLM modeli için ayrı sanal ortamlar kurarak gerekli paketleri indirdim ve daha temiz ve garanti bir çalışma şekli elde edebildim.<br>
 Langchain dokümantasyon sayfalarından güncel olarak paketi import etmek için hangi komut gerektiğini sıklıkla kontrol etmem gerekti.
 
@@ -168,7 +168,7 @@ Ancak yukarıda daha önce de belirtildiği gibi Google AI Studio'da proje baş�
 
 ### Veri Seti Yetersizliği
 Projeye geliştirme önerisi ve eleştiri olarak daha kapsamlı bir veri setiyle çalışabildiği takdirde daha esnek ve verimli bir chatbot geliştirilebiliceğini düşünüyorum.<br>
-Bazı sohbetlerde "similarity search" yanlış çalışabiliyor ve chatbotun kullanıcıyı yanlış anladığı ve yanlış bağlamı getirdiği durumlar oluşabildiğini gözlemledim.<br>
+Bazı sohbetlerde `similarity search` yanlış çalışabiliyor ve chatbotun kullanıcıyı yanlış anladığı ve yanlış bağlamı getirdiği durumlar oluşabildiğini gözlemledim.<br>
 Bununla beraber son olarak PDF'imizde Latince Tıbbi rahatsızlık isimleri geçmesi ve kaynağın İngilizce olması kullanıcının başka dillerde bir sorgu oluşturduğunda chatbotun anlamlı cevap verememesine sebebiyet verebildiğini gözlemledim.
 
 ### Özet
