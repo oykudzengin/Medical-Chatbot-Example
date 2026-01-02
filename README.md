@@ -94,7 +94,7 @@ RAGAS Metriklerimiz: Faithfulness ve Answer Relevancy.<br>
 
 ---
 
-### :key: Gerekli API Key'ler
+## :key: Gerekli API Key'ler
 
 - **Pinecone API Key** <br>
     Pinecone vektör veritabanımız için. 
@@ -156,22 +156,22 @@ python app_gq.py
 
 ## Proje Çıktıları, Dikkat Edilmesi Gereken Unsurlar ve Yorumlar
 
-# Paket versiyon çakışmaları
+### Paket versiyon çakışmaları
     Langchain kullanımında paket yapısı güncellenebilme durumu olduğundan "pip install" komutunu ortamınızda çalıştırıp yeni bir paket yüklediğinizde versiyon çatışmaları sebebiyle projeniz çalışmayabilir. Oldukça fazla kez karşıma çıkan bir problem oldu.
     İki LLM modeli için ayrı sanal ortamlar kurarak gerekli paketleri indirdim ve daha temiz ve garanti bir çalışma şekli elde edebildim.
     Langchain dokümantasyon sayfalarından güncel olarak paketi import etmek için hangi komut gerektiğini sıklıkla kontrol etmem gerekti.
 
-# API Key Free Trial Usage Limit
+### API Key Free Trial Usage Limit
     Eğer LLM kullanımlarında ücretsiz sürümlerden yararlanıyorsanız, uzun bir süre modeli deneyerek çalışmanızı yürütürseniz belirli bir zaman içerisindeki istek sınırına ulaşmanız olasıdır.
     Bu projede ücretsiz bir şekilde Google AI Studio ve Groq LLM Inference kullanarak API Key'ler oluşturuldu.
     Ancak yukarıda daha önce de belirtildiği gibi Google AI Studio'da proje başına olan kullanım limitini özellikle RAGAS işlemini yaparken aşmanız çok olasıdır, bu nedenle ayrı projeler ile farklı API Key'ler oluşturmanızı öneririm.
 
-# Veri Seti Yetersizliği
+### Veri Seti Yetersizliği
     Projeye geliştirme önerisi ve eleştiri olarak daha kapsamlı bir veri setiyle çalışabildiği takdirde daha esnek ve verimli bir chatbot geliştirilebiliceğini düşünüyorum.
     Bazı sohbetlerde "similarity search" yanlış çalışabiliyor ve chatbotun kullanıcıyı yanlış anladığı ve yanlış bağlamı getirdiği durumlar oluşabildiğini gözlemledim.
     Bununla beraber son olarak PDF'imizde Latince Tıbbi rahatsızlık isimleri geçmesi ve kaynağın İngilizce olması kullanıcının başka dillerde bir sorgu oluşturduğunda chatbotun anlamlı cevap verememesine sebebiyet verebildiğini gözlemledim.
 
-# Özet
+### Özet
     Bu projenin AI Chatbot yapımının temellerini kavramak ve konseptlere giriş yapmak için verimli bir başlangıç olduğunu düşünüyorum.
     Basic bir RAG projesiyle nasıl chatbot yapılabileceğiyle ilgili pratik yapabileceğiniz, temelde basit gibi olsa da tüm projeyi inşaa ederken minik detaylarla zorlanarak daha çok bilgilenebileceğiniz bir deneyim sunuyor.
 
