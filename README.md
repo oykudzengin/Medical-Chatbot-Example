@@ -75,6 +75,11 @@ RAGAS jurisi için Gemini LLM modeli kullanıldı. <br>
 RAGAS Metriklerimiz: Faithfulness ve Answer Relevancy.<br>
 5 Soruluk bir test verisi kullanıldı ve evaluation işlemi gerçekleştirildi.
 
+| Model    | Faithfulness | Answer_relevancy |
+|----------|-----------|--------|
+| Gemini   | 0     | 0   |
+| Llama3   | 0     | 0   |
+
 ---
 
 ##  :wrench: Local'de Uygulamayı Ayağa Kaldırma
