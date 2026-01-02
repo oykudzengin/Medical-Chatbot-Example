@@ -61,9 +61,9 @@ graph TD
 
 ## :bulb: Seçilen LLM Modelleri
 
-# Google Gemini (2.5-flash-lite) <br>
+### Google Gemini (2.5-flash-lite) <br>
     Sektörün GPT ile birlikte önde gelen modellerinden biri ve ücretsiz API key oluşturulabilmesi sebebiyle ilk tercihim oldu.
-# Groq (Llama 3.1 8B) <br>
+### Groq (Llama 3.1 8B) <br>
     Gemini ile karşılaştırma yapabileceğim (OpenAI dışı) bir model olarak, hızlı olması, Gemini'a kıyasla açık kaynak olması ve kurulum kolaylığı açısından Groq-Llama3 modelini tercih ettim. Bir de ücretsiz API key oluşturulup kullanilabilmesinden dolayı :smiley: .
 
 ---
@@ -77,12 +77,12 @@ RAGAS Metriklerimiz: Faithfulness ve Answer Relevancy.<br>
 
 ---
 
-##  :wrench: Local'de Modeli Ayağa Kaldırma
+##  :wrench: Local'de Uygulamayı Ayağa Kaldırma
 
 İki farklı LLM modeli kullanıldığından, iki farklı Python sanal environment oluşturularak ayrı ortamlarda yürütülmüştür. Bunun nedeni model değişikliği beraberinde gelen farklı langchain paketlerinde versiyon çatışması yaşanması ihtimaline karşın temiz bir çalışma ortaya çıkması amaçlanmasıdır.
 Langchain paketlerinin sıklıkla güncellenen yapıları sebebiyle import etme zorlukları ve versiyon çatışmaları sıklıkla karşımıza çıkıyor.
 
-# Projeleri Çalıştırma
+### Projeleri Çalıştırma
 Uygulamalari bir API üzerinden web sayfasında ayağa kaldırmak için Flask kullanıldı.
 İki model için ayrı app dosyaları oluşturulmuştur ve lokalimizde uygun environment aktive edildikten sonra ilgili app dosyası çalıştırılarak lokalden chatbota bağlantı sağlanabilmektedir.
 <br>
@@ -100,7 +100,13 @@ conda activate medibot_gq
 ```python
 python app_gq.py
 ```
+---
 
+## Arayüz
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/59cfac51-c057-4541-9cc4-b6a128cdc7bb" width="600" title="Arayüz">
+</p>
 
 
 
