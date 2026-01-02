@@ -116,7 +116,7 @@ RAGAS_JUDGE_API_KEY="your_api_key"
 RAGAS_JUDGE_GQ_API_KEY="your_api_key"
 ```
 
-==Not: Burada Google AI studio ücretsiz sürümden faydalanıldığı için RAGAS Evaluation jüri oluşturma işlemi esnasında kullanım sınırlarının aşılmaması adına farklı API Key'ler kullanılmıştır.==
+<mark> Not: Burada Google AI studio ücretsiz sürümden faydalanıldığı için RAGAS Evaluation jüri oluşturma işlemi esnasında kullanım sınırlarının aşılmaması adına farklı API Key'ler kullanılmıştır. </mark>
 
 ---
 
