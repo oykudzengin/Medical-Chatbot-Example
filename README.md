@@ -62,9 +62,9 @@ graph TD
 ## :bulb: Seçilen LLM Modelleri
 
 ### Google Gemini (2.5-flash-lite)
-    Sektörün GPT ile birlikte önde gelen modellerinden biri ve ücretsiz API key oluşturulabilmesi sebebiyle ilk tercihim oldu.
+Sektörün GPT ile birlikte önde gelen modellerinden biri ve ücretsiz API key oluşturulabilmesi sebebiyle ilk tercihim oldu.
 ### Groq (Llama 3.1 8B)
-    Gemini ile karşılaştırma yapabileceğim (OpenAI dışı) bir model olarak, hızlı olması, Gemini'a kıyasla açık kaynak olması ve kurulum kolaylığı açısından Groq-Llama3 modelini tercih ettim. Bir de ücretsiz API key oluşturulup kullanilabilmesinden dolayı :smiley: .
+Gemini ile karşılaştırma yapabileceğim (OpenAI dışı) bir model olarak, hızlı olması, Gemini'a kıyasla açık kaynak olması ve kurulum kolaylığı açısından Groq-Llama3 modelini tercih ettim. Bir de ücretsiz API key oluşturulup kullanilabilmesinden dolayı :smiley: .
 
 ---
 
@@ -96,15 +96,27 @@ RAGAS Metriklerimiz: Faithfulness ve Answer Relevancy.<br>
 
 ### :key: Gerekli API Key'ler
 
-- Pinecone API Key <br>
-    Pinecone vektör veritabanımız için. -> PINECONE_API_KEY
-- Google API Key <br>
-    Gemini modeli olan chatbotumuz için. -> GOOGLE_API_KEY
-- Groq API Key <br>
-    LLama modeli olan chatbotumuz için. -> GROQ_API_KEY
-- Google API Key (RAGAS) <br>
-    İki modelimiz için ayrı API Key'ler ile jüri oluşturduk. -> RAGAS_JUDGE_API_KEY & RAGAS_JUDGE_GQ_API_KEY
-    ==Not: Burada Google AI studio ücretsiz sürümden faydalanıldığı için RAGAS Evaluation işlemi esnasında kullanım sınırlarının aşılmaması adına farklı API Key'ler kullanılmıştır.==
+- **Pinecone API Key** <br>
+    Pinecone vektör veritabanımız için. 
+- **Google API Key** <br>
+    Gemini modeli olan chatbotumuz için.
+- **Groq API Key** <br>
+    LLama modeli olan chatbotumuz için.
+- **Google API Key (RAGAS)** <br>
+    İki modelimiz için ayrı API Key'ler ile jüri oluşturduk.<br>
+
+
+# .env Dosyanızın İçeriği
+```
+PINECONE_API_KEY="your_api_key"
+GOOGLE_API_KEY="your_api_key"
+GROQ_API_KEY="your_api_key"
+#yine Google API Key:
+RAGAS_JUDGE_API_KEY="your_api_key"
+RAGAS_JUDGE_GQ_API_KEY="your_api_key"
+```
+
+==Not: Burada Google AI studio ücretsiz sürümden faydalanıldığı için RAGAS Evaluation jüri oluşturma işlemi esnasında kullanım sınırlarının aşılmaması adına farklı API Key'ler kullanılmıştır.==
 
 ---
 
@@ -143,6 +155,27 @@ python app_gq.py
 ---
 
 ## Proje Çıktıları, Dikkat Edilmesi Gereken Unsurlar ve Yorumlar
+
+# Paket versiyon çakışmaları
+    Langchain kullanımında paket yapısı güncellenebilme durumu olduğundan "pip install" komutunu ortamınızda çalıştırıp yeni bir paket yüklediğinizde versiyon çatışmaları sebebiyle projeniz çalışmayabilir. Oldukça fazla kez karşıma çıkan bir problem oldu.
+    İki LLM modeli için ayrı sanal ortamlar kurarak gerekli paketleri indirdim ve daha temiz ve garanti bir çalışma şekli elde edebildim.
+    Langchain dokümantasyon sayfalarından güncel olarak paketi import etmek için hangi komut gerektiğini sıklıkla kontrol etmem gerekti.
+
+# API Key Free Trial Usage Limit
+    Eğer LLM kullanımlarında ücretsiz sürümlerden yararlanıyorsanız, uzun bir süre modeli deneyerek çalışmanızı yürütürseniz belirli bir zaman içerisindeki istek sınırına ulaşmanız olasıdır.
+    Bu projede ücretsiz bir şekilde Google AI Studio ve Groq LLM Inference kullanarak API Key'ler oluşturuldu.
+    Ancak yukarıda daha önce de belirtildiği gibi Google AI Studio'da proje başına olan kullanım limitini özellikle RAGAS işlemini yaparken aşmanız çok olasıdır, bu nedenle ayrı projeler ile farklı API Key'ler oluşturmanızı öneririm.
+
+# Veri Seti Yetersizliği
+    Projeye geliştirme önerisi ve eleştiri olarak daha kapsamlı bir veri setiyle çalışabildiği takdirde daha esnek ve verimli bir chatbot geliştirilebiliceğini düşünüyorum.
+    Bazı sohbetlerde "similarity search" yanlış çalışabiliyor ve chatbotun kullanıcıyı yanlış anladığı ve yanlış bağlamı getirdiği durumlar oluşabildiğini gözlemledim.
+    Bununla beraber son olarak PDF'imizde Latince Tıbbi rahatsızlık isimleri geçmesi ve kaynağın İngilizce olması kullanıcının başka dillerde bir sorgu oluşturduğunda chatbotun anlamlı cevap verememesine sebebiyet verebildiğini gözlemledim.
+
+# Özet
+    Bu projenin AI Chatbot yapımının temellerini kavramak ve konseptlere giriş yapmak için verimli bir başlangıç olduğunu düşünüyorum.
+    Basic bir RAG projesiyle nasıl chatbot yapılabileceğiyle ilgili pratik yapabileceğiniz, temelde basit gibi olsa da tüm projeyi inşaa ederken minik detaylarla zorlanarak daha çok bilgilenebileceğiniz bir deneyim sunuyor.
+
+
 
 
 
