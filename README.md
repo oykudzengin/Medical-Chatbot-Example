@@ -77,15 +77,15 @@ RAGAS Metriklerimiz: Faithfulness ve Answer Relevancy.<br>
 
 ### Örnek test soruları ve cevapları
 1. "What are the primary symptoms of Asthma?"
-    cevap: "Asthma symptoms include wheezing, shortness of breath, chest tightness, and coughing."
+    `cevap:` "Asthma symptoms include wheezing, shortness of breath, chest tightness, and coughing."
 2.  "What defines Hypertension (High Blood Pressure)?"
-    cevap:  "Hypertension is defined as having a blood pressure reading consistently at or above 140/90 mmHg."
+    `cevap:`  "Hypertension is defined as having a blood pressure reading consistently at or above 140/90 mmHg."
 3.  "What are the common causes of Iron Deficiency Anemia?"
-    cevap: "Iron deficiency anemia is caused by a lack of iron in the body due to blood loss or poor diet."
+    `cevap:` "Iron deficiency anemia is caused by a lack of iron in the body due to blood loss or poor diet."
 4.  "How is Type 2 Diabetes primarily characterized?"
-    cevap: "Type 2 diabetes is characterized by insulin resistance and high blood sugar levels."
+    `cevap:` "Type 2 diabetes is characterized by insulin resistance and high blood sugar levels."
 5.  "What are the early warning signs of Alzheimer's Disease?"
-    cevap:  "Early signs of Alzheimer's include memory loss, confusion with time or place, and trouble finding words."
+   `cevap:`  "Early signs of Alzheimer's include memory loss, confusion with time or place, and trouble finding words."
 
 | Model    | Faithfulness | Answer_relevancy |
 |----------|-----------|--------|
