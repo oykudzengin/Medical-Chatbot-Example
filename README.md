@@ -1,6 +1,7 @@
 # :speech_balloon: Medical-Chatbot
 ITU MTH409: AI Chatbot Course Term Assignment. 
 Bu proje, "The Gale Encyclopedia of Medicine" kitap pdf dosyası kullanılarak basic RAG yöntemiyle medikal asistan olan bir chatbot üretmeyi amaçlamıştır.
+[Proje PDF Raporu](https://github.com/user-attachments/files/24411751/odz_report.pdf)
 ### :pill: Medikal Asistan
 Asistanımız hastalık isimleri sorulduğunda kullanıcıyı bilgilendirir, tedavileri ve belirtileri hakkında soruları yanıtlar.
 
