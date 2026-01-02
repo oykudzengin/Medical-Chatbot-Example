@@ -77,8 +77,8 @@ RAGAS Metriklerimiz: Faithfulness ve Answer Relevancy.<br>
 
 | Model    | Faithfulness | Answer_relevancy |
 |----------|-----------|--------|
-| Gemini   | 0     | 0   |
-| Llama3   | 0     | 0   |
+| Gemini   | 1     | 0.886|
+| Llama3   | 0.871 | 0.918   |
 
 ---
 
