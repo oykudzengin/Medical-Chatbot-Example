@@ -1,7 +1,7 @@
-# Medical-Chatbot
+# :speech_balloon: Medical-Chatbot
 ITU MTH409: AI Chatbot Course Term Assignment. 
 Bu proje, "The Gale Encyclopedia of Medicine" kitap pdf dosyasi kullanilarak medikal asistan olan bir chatbot uretmeyi amaclamistir.
-### Medikal Asistan
+### :pill: Medikal Asistan
 Asistanımız hastalık isimleri sorulduğunda kullanıcıyı bilgilendirir, tedavileri ve belirtileri hakkında soruları yanıtlar.
 
 ---
@@ -59,43 +59,54 @@ graph TD
 
 ---
 
-## Seçilen LLM Modelleri
+## :bulb: Seçilen LLM Modelleri
 
-- Google Gemini (2.5-flash-lite) <br>
+### Google Gemini (2.5-flash-lite) <br>
     Sektörün GPT ile birlikte önde gelen modellerinden biri ve ücretsiz API key oluşturulabilmesi sebebiyle ilk tercihim oldu.
-- Groq (Llama 3.1 8B) <br>
-    Gemini ile karşılaştırma yapabileceğim (OpenAI dışı) bir model olarak, hızlı olması, Gemini'a kıyasla açık kaynak olması ve kurulum kolaylığı açısından Groq-Llama3 modelini tercih ettim. Bir de ücretsiz API key oluşturulabilmesinden dolayı :smiley: .
+### Groq (Llama 3.1 8B) <br>
+    Gemini ile karşılaştırma yapabileceğim (OpenAI dışı) bir model olarak, hızlı olması, Gemini'a kıyasla açık kaynak olması ve kurulum kolaylığı açısından Groq-Llama3 modelini tercih ettim. Bir de ücretsiz API key oluşturulup kullanilabilmesinden dolayı :smiley: .
 
 ---
 
-## Model Karşılaştırma
+## :bar_chart: Model Karşılaştırma
 
-Veri seti olarak PDF dosyası kullanıldığından dolayı bu projede iki LLM modelini kıyaslamak adına RAGAS (RAG Assessment) kütüphanesi kullanıldı. RAGAS Framework kullanılarak iki model arası bir Doğruluk Raporu çıkarıldı.
+Veri seti olarak PDF dosyası kullanıldığından dolayı bu projede iki LLM modelini kıyaslamak adına RAGAS (RAG Assessment) kütüphanesi kullanıldı. RAGAS Framework kullanılarak iki model için de Evaluation yapılarak csv dosyalarında sonuçlar tutuldu.<br>
+RAGAS jurisi için Gemini LLM modeli kullanıldı. <br>
+RAGAS Metriklerimiz: Faithfulness ve Answer Relevancy.<br>
+5 Soruluk bir test verisi kullanıldı ve evaluation işlemi gerçekleştirildi.
 
 ---
 
-## Local'de Modeli Ayağa Kaldırma
+##  :wrench: Local'de Uygulamayı Ayağa Kaldırma
 
 İki farklı LLM modeli kullanıldığından, iki farklı Python sanal environment oluşturularak ayrı ortamlarda yürütülmüştür. Bunun nedeni model değişikliği beraberinde gelen farklı langchain paketlerinde versiyon çatışması yaşanması ihtimaline karşın temiz bir çalışma ortaya çıkması amaçlanmasıdır.
 Langchain paketlerinin sıklıkla güncellenen yapıları sebebiyle import etme zorlukları ve versiyon çatışmaları sıklıkla karşımıza çıkıyor.
 
-#Projeleri Çalıştırma
-İki model için ayrı app dosyaları oluşturulmuştur ve lokalimizde uygun environment aktive edildikten sonra ilgili app dosyası çalıştırılarak lokalden chatbota bağlantı sağlanabilmektedir. <br>
-a.Gemini Modeli <br>
+### Projeleri Çalıştırma
+Uygulamalari bir API üzerinden web sayfasında ayağa kaldırmak için Flask kullanıldı.
+İki model için ayrı app dosyaları oluşturulmuştur ve lokalimizde uygun environment aktive edildikten sonra ilgili app dosyası çalıştırılarak lokalden chatbota bağlantı sağlanabilmektedir.
+<br>
+a. Gemini Modeli <br>
 ```
 conda activate medibot
 ```
 ```python
 python app.py
 ```
-b.Groq LLama Modeli <br>
+b. Groq LLama3 Modeli <br>
 ```
 conda activate medibot_gq
 ```
 ```python
 python app_gq.py
 ```
+---
 
+## Arayüz
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/59cfac51-c057-4541-9cc4-b6a128cdc7bb" width="600" title="Arayüz">
+</p>
 
 
 

@@ -8,21 +8,19 @@ langchain
 langchain-core
 langchain-community
 langchain-huggingface
+langchain-text-splitters
 
 # Pinecone integration
 langchain-pinecone
 
-# Google Gemini support
-#langchain-google-genai
-#google-generativeai
 
 #Groq LLama
-langchain-groq==0.1.4
+langchain-groq
 
 # Embeddings / Vectorization
 sentence-transformers
 pypdf
 
-langchain-text-splitters
+
 -e .
 
