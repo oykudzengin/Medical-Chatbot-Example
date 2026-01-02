@@ -106,7 +106,7 @@ RAGAS Metriklerimiz: Faithfulness ve Answer Relevancy.<br>
     İki modelimiz için ayrı API Key'ler ile jüri oluşturduk.<br>
 
 
-# .env Dosyanızın İçeriği
+### .env Dosyanızın İçeriği
 ```
 PINECONE_API_KEY="your_api_key"
 GOOGLE_API_KEY="your_api_key"
