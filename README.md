@@ -1,6 +1,6 @@
 # :speech_balloon: Medical-Chatbot
 ITU MTH409: AI Chatbot Course Term Assignment. 
-Bu proje, "The Gale Encyclopedia of Medicine" kitap pdf dosyasi kullanilarak medikal asistan olan bir chatbot uretmeyi amaclamistir.
+Bu proje, "The Gale Encyclopedia of Medicine" kitap pdf dosyası kullanılarak medikal asistan olan bir chatbot üretmeyi amaçlamıştır.
 ### :pill: Medikal Asistan
 Asistanımız hastalık isimleri sorulduğunda kullanıcıyı bilgilendirir, tedavileri ve belirtileri hakkında soruları yanıtlar.
 
@@ -8,7 +8,7 @@ Asistanımız hastalık isimleri sorulduğunda kullanıcıyı bilgilendirir, ted
 
 ## 🏗️ Proje Mimarisi ve Çalışma Mantığı
 
-Proje, verilerin işlenmesi (Ingestion) ve kullanıcının soru sorması (Inference) olmak üzere iki ana aşamadan oluşur. Tüm bu süreçlerin yönetiminde **LangChain** orkestrasyon framework'ü kullanılmıştır.
+Proje, verilerin işlenmesi (Ingestion) ve kullanıcının soru sorması (Inference) olmak üzere iki ana aşamadan oluşur. Tüm bu süreçlerin yönetiminde **LangChain** framework'ü kullanılmıştır.
 
 ### 1. Veri Hazırlığı ve İndeksleme (Data Ingestion)
 Chatbot'un verileri tanıması için yapılan ön hazırlık aşamasıdır:
@@ -29,11 +29,11 @@ Kullanıcı arayüz üzerinden bir soru sorduğunda arka planda şu işlemler ge
 
 ---
 
-## 🛠️ Kullanılan Teknolojiler
+## 🛠️ Kullanılan Araçlar
 
 Bu projenin hayata geçirilmesinde aşağıdaki modern AI teknolojileri kullanılmıştır:
 
-| Teknoloji | Görevi | Neden Seçildi? |
+| Araç | Görevi | Neden Seçildi? |
 |-----------|--------|----------------|
 | **LangChain** | **Omurga** | Tüm bileşenleri (LLM, VectorDB, Prompt) birbirine bağlayan ana iskeleti oluşturur. |
 | **Google Gemini** | **LLM (Zeka)** | Hızlı yanıt süresi ve yüksek bağlam kapasitesi için tercih edildi. |
@@ -61,9 +61,9 @@ graph TD
 
 ## :bulb: Seçilen LLM Modelleri
 
-### Google Gemini (2.5-flash-lite) <br>
+### Google Gemini (2.5-flash-lite)
     Sektörün GPT ile birlikte önde gelen modellerinden biri ve ücretsiz API key oluşturulabilmesi sebebiyle ilk tercihim oldu.
-### Groq (Llama 3.1 8B) <br>
+### Groq (Llama 3.1 8B)
     Gemini ile karşılaştırma yapabileceğim (OpenAI dışı) bir model olarak, hızlı olması, Gemini'a kıyasla açık kaynak olması ve kurulum kolaylığı açısından Groq-Llama3 modelini tercih ettim. Bir de ücretsiz API key oluşturulup kullanilabilmesinden dolayı :smiley: .
 
 ---
@@ -94,10 +94,25 @@ RAGAS Metriklerimiz: Faithfulness ve Answer Relevancy.<br>
 
 ---
 
+### :key: Gerekli API Key'ler
+
+- Pinecone API Key <br>
+    Pinecone vektör veritabanımız için. -> PINECONE_API_KEY
+- Google API Key <br>
+    Gemini modeli olan chatbotumuz için. -> GOOGLE_API_KEY
+- Groq API Key <br>
+    LLama modeli olan chatbotumuz için. -> GROQ_API_KEY
+- Google API Key (RAGAS) <br>
+    İki modelimiz için ayrı API Key'ler ile jüri oluşturduk. -> RAGAS_JUDGE_API_KEY & RAGAS_JUDGE_GQ_API_KEY
+    ==Not: Burada Google AI studio ücretsiz sürümden faydalanıldığı için RAGAS Evaluation işlemi esnasında kullanım sınırlarının aşılmaması adına farklı API Key'ler kullanılmıştır.==
+
+---
+
 ##  :wrench: Local'de Uygulamayı Ayağa Kaldırma
 
 İki farklı LLM modeli kullanıldığından, iki farklı Python sanal environment oluşturularak ayrı ortamlarda yürütülmüştür. Bunun nedeni model değişikliği beraberinde gelen farklı langchain paketlerinde versiyon çatışması yaşanması ihtimaline karşın temiz bir çalışma ortaya çıkması amaçlanmasıdır.
 Langchain paketlerinin sıklıkla güncellenen yapıları sebebiyle import etme zorlukları ve versiyon çatışmaları sıklıkla karşımıza çıkıyor.
+
 
 ### Projeleri Çalıştırma
 Uygulamalari bir API üzerinden web sayfasında ayağa kaldırmak için Flask kullanıldı.
@@ -124,6 +139,11 @@ python app_gq.py
 <p align="center">
   <img src="https://github.com/user-attachments/assets/59cfac51-c057-4541-9cc4-b6a128cdc7bb" width="600" title="Arayüz">
 </p>
+
+---
+
+## Proje Çıktıları, Dikkat Edilmesi Gereken Unsurlar ve Yorumlar
+
 
 
 
